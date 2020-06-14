@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -34,15 +35,15 @@ func main() {
 
 	done := make(chan struct{})
 
-	username := "justinfan" + strconv.Itoa(rand.Intn(49999 - 10000) + 10000)
+	username := "justinfan" + strconv.Itoa(rand.Intn(49999-10000)+10000)
 	log.Printf("Connecting as %s", username)
 	c.WriteMessage(websocket.TextMessage, []byte("CAP REQ :twitch.tv/tags twitch.tv/commands"))
 	c.WriteMessage(websocket.TextMessage, []byte("PASS SCHMOOPIIE"))
-	c.WriteMessage(websocket.TextMessage, []byte("NICK " + username))
-	c.WriteMessage(websocket.TextMessage, []byte("USER " + username + " 8 * :" + username))
+	c.WriteMessage(websocket.TextMessage, []byte("NICK "+username))
+	c.WriteMessage(websocket.TextMessage, []byte("USER "+username+" 8 * :"+username))
 
 	log.Printf("Joining channel #%s", *channel)
-	c.WriteMessage(websocket.TextMessage, []byte("JOIN #" + *channel))
+	c.WriteMessage(websocket.TextMessage, []byte("JOIN #"+*channel))
 
 	go func() {
 		defer close(done)
@@ -53,6 +54,9 @@ func main() {
 				return
 			}
 			log.Printf("recv: %s", message)
+			if strings.HasPrefix(string(message), "PING") {
+				c.WriteMessage(websocket.TextMessage, []byte("PONG"))
+			}
 		}
 	}()
 
