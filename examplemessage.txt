@@ -1,0 +1,16 @@
+
+recv: @badge-info=;badges=;client-nonce=99c4a81eb60977e65bf244d24e7d4ad7;color=#00FF7F;display-name=denzybenz6;emotes=;flags=;id=9a874e74-f550-4f25-9e3e-54da6452d067;mod=0;room-id=25093116;subscriber=0;tmi-sent-ts=159208114
+2563;turbo=0;user-id=211227451;user-type= :denzybenz6!denzybenz6@denzybenz6.tmi.twitch.tv PRIVMSG #fl0m :COGGERS
+
+
+
+recv
+
+@badge-info=;badges=;client-nonce=99c4a81eb60977e65bf244d24e7d4ad7;color=#00FF7F;display-name=denzybenz6;emotes=;flags=;id=9a874e74-f550-4f25-9e3e-54da6452d067;mod=0;room-id=25093116;subscriber=0;tmi-sent-ts=159208114
+2563;turbo=0;user-id=211227451;user-type= 
+
+denzybenz6!denzybenz6@denzybenz6.tmi.twitch.tv PRIVMSG #fl0m 
+
+COGGERS
+
+

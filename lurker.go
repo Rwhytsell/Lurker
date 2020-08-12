@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"log"
 	"math/rand"
@@ -48,15 +49,32 @@ func main() {
 	go func() {
 		defer close(done)
 		for {
-			_, message, err := c.ReadMessage()
+			_, messageBytes, err := c.ReadMessage()
 			if err != nil {
-				log.Println("read:", err)
+				log.Println("Error:", err)
 				return
 			}
-			log.Printf("recv: %s", message)
-			if strings.HasPrefix(string(message), "PING") {
+			message := string(messageBytes)
+			if strings.HasPrefix(message, "PING") {
 				c.WriteMessage(websocket.TextMessage, []byte("PONG"))
+				continue
 			}
+			if strings.Contains(message, "ACK :twitch.tv/tags twitch.tv/commands") ||
+				strings.Contains(message, ":Your host is tmi.twitch.tv") ||
+				strings.Contains(message, "tmi.twitch.tv JOIN") ||
+				strings.Contains(message, "End of /NAMES list") ||
+				strings.Contains(message, ":tmi.twitch.tv USERNOTICE"){
+				continue
+			}
+			parsed := ParseMessage(message)
+			log.Printf("recv: %s: %s", parsed.Username, parsed.MessageText)
+			messageJson, err := json.Marshal(parsed)
+			if err != nil{
+				log.Println("Could not parse message into json")
+				continue
+			}
+			// Go send the json
+			go SaveMessage(string(messageJson), "./output.txt")
 		}
 	}()
 
