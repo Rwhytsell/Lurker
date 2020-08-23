@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 
@@ -16,8 +17,9 @@ func ParseMessage(s string) models.Message {
 	test := strings.SplitAfter(infoMessageSplit[1], "PRIVMSG")
 	message := strings.SplitN(test[1], ":", 2)
 	re := regexp.MustCompile(`\r?\n`)
-	cleaned := re.ReplaceAllString(message[1], " ")
+	cleaned := re.ReplaceAllString(message[1], "")
 	parsedMessage.MessageText = cleaned
+	parsedMessage.Channel = strings.Trim(message[0], " #")
 
 	splitMessageInfo := strings.Split(infoMessageSplit[0], ";")
 
@@ -36,6 +38,7 @@ func ParseMessage(s string) models.Message {
 			parsedMessage.IsTurbo, _ = strconv.ParseBool(splitItem[1])
 		}
 	}
+	parsedMessage.DateSent = time.Now().UTC()
 
 	return parsedMessage
 }

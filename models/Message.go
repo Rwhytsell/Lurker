@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type Message struct {
 	Username string
 	UserId string
@@ -7,4 +9,6 @@ type Message struct {
 	IsSub bool
 	IsMod bool
 	IsTurbo bool
+	Channel string
+	DateSent time.Time
 }

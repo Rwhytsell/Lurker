@@ -17,6 +17,7 @@ import (
 
 var addr = flag.String("addr", "irc-ws.chat.twitch.tv", "http service address")
 var channel = flag.String("chan", "summit1g", "Target IRC Channel")
+var credentials = flag.String("creds", "user", "password")
 
 func main() {
 	flag.Parse()
@@ -59,11 +60,7 @@ func main() {
 				c.WriteMessage(websocket.TextMessage, []byte("PONG"))
 				continue
 			}
-			if strings.Contains(message, "ACK :twitch.tv/tags twitch.tv/commands") ||
-				strings.Contains(message, ":Your host is tmi.twitch.tv") ||
-				strings.Contains(message, "tmi.twitch.tv JOIN") ||
-				strings.Contains(message, "End of /NAMES list") ||
-				strings.Contains(message, ":tmi.twitch.tv USERNOTICE"){
+			if !strings.Contains(message, "PRIVMSG") {
 				continue
 			}
 			parsed := ParseMessage(message)
@@ -74,7 +71,7 @@ func main() {
 				continue
 			}
 			// Go send the json
-			go SaveMessage(string(messageJson), "./output.txt")
+			SendMessage(string(messageJson))
 		}
 	}()
 
