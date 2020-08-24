@@ -17,7 +17,7 @@ import (
 
 var addr = flag.String("addr", "irc-ws.chat.twitch.tv", "http service address")
 var channel = flag.String("chan", "summit1g", "Target IRC Channel")
-var credentials = flag.String("creds", "user", "password")
+var credentials = flag.String("creds", "user:password@host", "")
 
 func main() {
 	flag.Parse()
@@ -71,7 +71,7 @@ func main() {
 				continue
 			}
 			// Go send the json
-			SendMessage(string(messageJson))
+			SendMessage(string(messageJson), *credentials)
 		}
 	}()
 

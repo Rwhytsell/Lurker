@@ -13,7 +13,7 @@ func failOnError(err error, msg string) {
 }
 
 func SendMessage(s string, creds string) {
-	target := fmt.Sprintf("amqp://%s@localhost:5672", creds)
+	target := fmt.Sprintf("amqp://%s:5672", creds)
 	conn, err := amqp.Dial(target)
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
