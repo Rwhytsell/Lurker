@@ -150,15 +150,15 @@ Project Link: [https://github.com/Rwhytsell/Lurker/](https://github.com/Rwhytsel
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/RWhytsell/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Rwhytsell/Lurker?style=for-the-badge
 [contributors-url]: https://github.com/Rwhytsell/Lurker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/RWhytsell/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/RWhytsell/Lurker?style=for-the-badge
 [forks-url]: https://github.com/Rwhytsell/Lurker/network/members
-[stars-shield]: https://img.shields.io/github/stars/RWhytsell/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/RWhytsell/Lurker?style=for-the-badge
 [stars-url]: https://github.com/Rwhytsell/Lurker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/RWhytsell/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/RWhytsell/Lurker?style=for-the-badge
 [issues-url]: https://github.com/Rwhytsell/Lurker/issues
-[license-shield]: https://img.shields.io/github/license/RWhytsell/repo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/RWhytsell/Lurker?style=for-the-badge
 [license-url]: https://github.com/rwhytsell/Lurker/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/rwhytsell
