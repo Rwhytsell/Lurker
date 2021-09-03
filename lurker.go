@@ -17,7 +17,7 @@ import (
 
 var addr = flag.String("addr", "irc-ws.chat.twitch.tv", "http service address")
 var channel = flag.String("chan", "summit1g", "Target IRC Channel")
-var credentials = flag.String("creds", "user:password@host", "")
+var credentials = flag.String("creds", "user:password@host", "Address of the rabbitmq instance")
 
 func main() {
 	flag.Parse()
