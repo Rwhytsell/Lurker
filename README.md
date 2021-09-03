@@ -62,6 +62,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+Lurker is a twitch chat scraper built with Golang. This project is only concerned with the extraction of the chat data into a RabbitMQ topic. In the future, I may release a project around the consumption of that topic and loading into a database like couchbase. 
+
 ### Built With
 
 * [Golang](https://golang.org/)
@@ -117,8 +119,6 @@ lurker --addr irc-ws.chat.twitch.tv --chan summit1g --creds user:password@host
 ## Roadmap
 
 See the [open issues](https://github.com/Rwhytsell/Lurker/issues) for a list of proposed features (and known issues).
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
