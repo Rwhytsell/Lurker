@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/streadway/amqp"
+	amqp "github.com/rabbitmq/amqp091-go"
 	"log"
 )
 
@@ -24,11 +24,11 @@ func SendMessage(s string, creds string) {
 
 	q, err := ch.QueueDeclare(
 		"lurker", // name
-		true,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
+		true,     // durable
+		false,    // delete when unused
+		false,    // exclusive
+		false,    // no-wait
+		nil,      // arguments
 	)
 
 	failOnError(err, "Failed to declare a queue")
