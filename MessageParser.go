@@ -13,8 +13,8 @@ func ParseMessage(s string) models.Message {
 	parsedMessage := models.Message{}
 
 	infoMessageSplit := strings.Split(s, "user-type=")
-	test := strings.SplitAfter(infoMessageSplit[1], "PRIVMSG")
-	message := strings.SplitN(test[1], ":", 2)
+	trimmed := strings.SplitAfter(infoMessageSplit[1], "PRIVMSG")
+	message := strings.SplitN(trimmed[1], ":", 2)
 	parsedMessage.MessageText = strings.Trim(message[1], "\r\n")
 	parsedMessage.Channel = strings.Trim(message[0], " #")
 
