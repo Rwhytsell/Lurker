@@ -17,7 +17,7 @@ import (
 
 var addr = flag.String("addr", "irc-ws.chat.twitch.tv", "http service address")
 var channel = flag.String("chan", "summit1g", "Target IRC Channel")
-var credentials = flag.String("creds", "user:password@host", "Address of the rabbitmq instance")
+var credentials = flag.String("creds", "user:password@localhost", "Address of the rabbitmq instance")
 
 func main() {
 	flag.Parse()
@@ -66,7 +66,7 @@ func main() {
 			parsed := ParseMessage(message)
 			log.Printf("recv: %s: %s", parsed.Username, parsed.MessageText)
 			messageJson, err := json.Marshal(parsed)
-			if err != nil{
+			if err != nil {
 				log.Println("Could not parse message into json")
 				continue
 			}
