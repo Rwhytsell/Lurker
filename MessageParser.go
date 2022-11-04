@@ -1,17 +1,17 @@
 package main
 
 import (
+	"Rwhytsell.dev/lurker/models"
 	"strconv"
 	"strings"
 	"time"
-
-	"Rwhytsell.dev/lurker/models"
 )
 
 // ParseMessage parses the message received from twitch websocket and parse it into an object we can use elsewhere
 func ParseMessage(s string) models.Message {
 	parsedMessage := models.Message{}
-
+	parsedMessage.DateSent = time.Now().UTC()
+	
 	infoMessageSplit := strings.Split(s, "user-type=")
 	trimmed := strings.SplitAfter(infoMessageSplit[1], "PRIVMSG")
 	message := strings.SplitN(trimmed[1], ":", 2)
@@ -35,7 +35,6 @@ func ParseMessage(s string) models.Message {
 			parsedMessage.IsTurbo, _ = strconv.ParseBool(splitItem[1])
 		}
 	}
-	parsedMessage.DateSent = time.Now().UTC()
 
 	return parsedMessage
 }
